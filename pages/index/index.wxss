@@ -1,0 +1,90 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+  background: linear-gradient(180deg, #FFE4E1 0%, #FFF5F5 100%);
+  border-radius: 0 0 40rpx 40rpx;
+  margin: -20rpx -20rpx 0 -20rpx;
+  padding: 60rpx 20rpx;
+}
+
+.logo {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.welcome {
+  font-size: 40rpx;
+  color: #FF69B4;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #FF99CC;
+  margin-top: 10rpx;
+}
+
+.quick-stats {
+  margin-top: 40rpx;
+}
+
+.stats-content {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFF5F5;
+  padding: 20rpx 40rpx;
+  border-radius: 20rpx;
+}
+
+.stats-num {
+  font-size: 48rpx;
+  color: #FF69B4;
+  font-weight: bold;
+}
+
+.stats-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.quick-actions {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.tips {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1.6;
+}
+
+.cute-btn {
+  background: linear-gradient(45deg, #FF69B4, #FF99CC);
+  color: white;
+  border-radius: 30rpx;
+  padding: 20rpx 40rpx;
+  font-size: 32rpx;
+  box-shadow: 0 4rpx 8rpx rgba(255, 105, 180, 0.3);
+  border: none;
+} 

@@ -1,0 +1,48 @@
+/* 全局样式 */
+page {
+  background-color: #FFF5F5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+}
+
+.container {
+  padding: 20rpx;
+}
+
+/* 可爱按钮样式 */
+.cute-btn {
+  background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
+  color: white;
+  border-radius: 30rpx;
+  padding: 20rpx 40rpx;
+  box-shadow: 0 4rpx 8rpx rgba(255, 182, 193, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cute-btn:active {
+  transform: scale(0.95);
+}
+
+/* 卡片样式 */
+.card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 20rpx 0;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 标题样式 */
+.title {
+  font-size: 32rpx;
+  color: #FF69B4;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+/* 可爱图标 */
+.icon {
+  width: 40rpx;
+  height: 40rpx;
+} 

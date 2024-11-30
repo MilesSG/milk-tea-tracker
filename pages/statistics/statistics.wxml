@@ -1,0 +1,16 @@
+<!--pages/statistics/statistics.wxml-->
+<view class="container">
+  <view class="stats-overview">
+    <view class="title">奶茶数据统计 ♪(^∇^*)</view>
+    <view class="stats-card card">
+      <view class="stats-item">
+        <text class="stats-label">本月总数</text>
+        <text class="stats-value">{{monthlyCount}}</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-label">总卡路里</text>
+        <text class="stats-value">{{totalCalories}}</text>
+      </view>
+    </view>
+  </view>
+</view>

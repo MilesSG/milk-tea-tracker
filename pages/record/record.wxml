@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="form-card card">
+    <view class="title">记录今天的奶茶 (◕‿◕✿)</view>
+    
+    <form bindsubmit="submitRecord">
+      <view class="form-item">
+        <text class="label">奶茶品牌</text>
+        <input name="brand" placeholder="请输入奶茶品牌" />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">饮品名称</text>
+        <input name="name" placeholder="请输入饮品名称" />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">卡路里</text>
+        <input name="calories" type="number" placeholder="请输入卡路里" />
+      </view>
+      
+      <button class="cute-btn submit-btn" form-type="submit">
+        保存记录 ♪(^∇^*)
+      </button>
+    </form>
+  </view>
+</view> 

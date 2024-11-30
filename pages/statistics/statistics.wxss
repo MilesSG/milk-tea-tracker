@@ -1,0 +1,27 @@
+.stats-overview {
+  padding: 20rpx;
+}
+
+.stats-card {
+  display: flex;
+  justify-content: space-around;
+  padding: 40rpx 20rpx;
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.stats-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.stats-value {
+  font-size: 48rpx;
+  color: #FF69B4;
+  font-weight: bold;
+} 

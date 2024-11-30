@@ -1,0 +1,35 @@
+.history-list {
+  padding: 20rpx;
+}
+
+.record-item {
+  margin-bottom: 20rpx;
+}
+
+.record-date {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.record-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.brand {
+  font-size: 32rpx;
+  color: #FF69B4;
+  font-weight: bold;
+}
+
+.name {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.calories {
+  font-size: 24rpx;
+  color: #999;
+} 

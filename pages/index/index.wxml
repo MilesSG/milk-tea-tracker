@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="header">
+    <text class="welcome">欢迎来到奶茶日记 (｡♥‿♥｡)</text>
+    <text class="subtitle">记录每一杯幸福时光 ♪(^∇^*)</text>
+  </view>
+  
+  <view class="quick-stats card">
+    <view class="title">今日概览 ✧(≖ ◡ ≖✿)</view>
+    <view class="stats-content">
+      <view class="stats-item">
+        <text class="stats-num">{{todayCount}}</text>
+        <text class="stats-label">今日奶茶</text>
+      </view>
+      <view class="stats-item">
+        <text class="stats-num">{{todayCalories}}</text>
+        <text class="stats-label">卡路里</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <button class="cute-btn" bindtap="goToRecord">
+      记录新的奶茶 ✧(≖ ◡ ≖✿)
+    </button>
+  </view>
+
+  <view class="tips card" wx:if="{{todayCount === 0}}">
+    <text class="tip-text">今天还没有喝奶茶呢~ (´･ω･`)</text>
+    <text class="tip-text">要不要来一杯？</text>
+  </view>
+</view> 
