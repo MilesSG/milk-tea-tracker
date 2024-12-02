@@ -132,69 +132,84 @@
 }
 
 .record-list {
-  min-height: 200rpx;
+  padding: 0 10rpx;
 }
 
-.record-item {
-  padding: 16rpx 0;
-  border-bottom: 1rpx solid #F5F5F5;
+.record-card {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
 }
 
-.record-time {
-  font-size: 24rpx;
-  color: #999999;
-  margin-bottom: 8rpx;
-}
-
-.record-content {
+.card-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-bottom: 16rpx;
 }
 
-.record-main {
-  flex: 1;
-}
-
-.brand {
-  font-size: 32rpx;
-  color: #333333;
+.brand-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
   margin-right: 16rpx;
 }
 
-.name {
-  font-size: 32rpx;
-  color: #666666;
+.brand-info {
+  flex: 1;
 }
 
-.record-detail {
+.brand-name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4rpx;
+}
+
+.drink-name {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.time-tag {
+  font-size: 24rpx;
+  color: #999;
+  background: #F8F8F8;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.card-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8rpx;
 }
 
-.detail-info {
+.info-tags {
   display: flex;
-  gap: 16rpx;
-  align-items: center;
+  gap: 12rpx;
 }
 
-.detail-info .calories,
-.detail-info .price {
+.tag {
   font-size: 24rpx;
-  color: #666666;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
 }
 
-.detail-info .price {
+.price-tag {
+  background: rgba(255, 105, 180, 0.1);
   color: #FF69B4;
-  font-weight: 500;
+}
+
+.calories-tag {
+  background: rgba(255, 192, 203, 0.1);
+  color: #666;
 }
 
 .actions {
   display: flex;
-  gap: 16rpx;
-  align-items: center;
+  gap: 12rpx;
 }
 
 .action-btn {
@@ -203,32 +218,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 24rpx;
-}
-
-.action-btn.edit {
+  border-radius: 50%;
   background: #F8F8F8;
 }
 
-.action-btn.delete {
-  background: #FFF0F0;
+.action-btn.edit {
+  color: #FF69B4;
 }
 
-.icon {
-  font-size: 28rpx;
-  color: #666666;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
+.action-btn.delete {
+  color: #FF6B6B;
+}
+
+.action-btn .icon {
+  font-size: 24rpx;
 }
 
 .empty-tip {
   text-align: center;
   padding: 40rpx 0;
-  color: #999999;
+  color: #999;
   font-size: 28rpx;
 }
 
@@ -239,7 +248,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 1000;
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s;
@@ -256,7 +265,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .form-content {
@@ -265,10 +274,10 @@
   left: 0;
   right: 0;
   background: #FFFFFF;
-  border-radius: 32rpx 32rpx 0 0;
-  padding: 32rpx;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 24rpx;
   transform: translateY(100%);
-  transition: all 0.3s;
+  transition: transform 0.3s;
 }
 
 .custom-form.show .form-content {
@@ -279,47 +288,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32rpx;
+  margin-bottom: 24rpx;
 }
 
 .form-header .title {
   font-size: 32rpx;
   font-weight: 500;
-  color: #333333;
 }
 
 .form-header .close {
   font-size: 40rpx;
-  color: #999999;
-  padding: 16rpx;
+  color: #999;
+  padding: 10rpx;
 }
 
 .form-item {
   margin-bottom: 24rpx;
 }
 
-.label {
-  display: block;
+.form-item .label {
   font-size: 28rpx;
-  color: #666666;
+  color: #666;
   margin-bottom: 8rpx;
+  display: block;
 }
 
-input {
+.form-item input {
   background: #F8F8F8;
-  border-radius: 8rpx;
+  border-radius: 12rpx;
   padding: 16rpx;
   font-size: 28rpx;
 }
 
 .submit-btn {
-  margin-top: 40rpx;
   background: #FF69B4;
   color: #FFFFFF;
-  border-radius: 8rpx;
+  border-radius: 99rpx;
+  margin-top: 32rpx;
   font-size: 32rpx;
+  border: none;
 }
 
-.submit-btn:active {
-  opacity: 0.9;
+.submit-btn::after {
+  border: none;
 }

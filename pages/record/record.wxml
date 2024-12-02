@@ -27,25 +27,26 @@
       </view>
     </view>
     <view class="record-list">
-      <view class="record-item" wx:for="{{todayRecords}}" wx:key="time">
-        <view class="record-time">{{item.timeStr}}</view>
-        <view class="record-content">
-          <view class="record-main">
-            <text class="brand">{{item.brand}}</text>
-            <text class="name">{{item.name}}</text>
+      <view class="record-card" wx:for="{{todayRecords}}" wx:key="time">
+        <view class="card-header">
+          <image class="brand-icon" src="{{item.icon}}" mode="aspectFit"></image>
+          <view class="brand-info">
+            <view class="brand-name">{{item.brand}}</view>
+            <view class="drink-name">{{item.name}}</view>
           </view>
-          <view class="record-detail">
-            <view class="detail-info">
-              <text class="calories">{{item.calories}} 卡路里</text>
-              <text class="price">¥{{item.price}}</text>
+          <view class="time-tag">{{item.timeStr}}</view>
+        </view>
+        <view class="card-content">
+          <view class="info-tags">
+            <view class="tag price-tag">¥{{item.price}}</view>
+            <view class="tag calories-tag">{{item.calories}}卡路里</view>
+          </view>
+          <view class="actions">
+            <view class="action-btn edit" bindtap="editRecord" data-id="{{item.id}}">
+              <text class="icon">✎</text>
             </view>
-            <view class="actions">
-              <view class="action-btn edit" bindtap="editRecord" data-id="{{item.id}}">
-                <text class="icon">✎</text>
-              </view>
-              <view class="action-btn delete" bindtap="deleteRecord" data-id="{{item.id}}">
-                <text class="icon">×</text>
-              </view>
+            <view class="action-btn delete" bindtap="deleteRecord" data-id="{{item.id}}">
+              <text class="icon">×</text>
             </view>
           </view>
         </view>
