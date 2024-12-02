@@ -1,26 +1,78 @@
 <view class="container">
-  <view class="form-card card">
-    <view class="title">记录今天的奶茶 (◕‿◕✿)</view>
-    
-    <form bindsubmit="submitRecord">
-      <view class="form-item">
-        <text class="label">奶茶品牌</text>
-        <input name="brand" placeholder="请输入奶茶品牌" />
+  <!-- 快捷添加区域 -->
+  <view class="quick-add">
+    <view class="quick-add-header">
+      <text class="title">快速记录</text>
+      <text class="date">{{currentDate}}</text>
+    </view>
+    <view class="quick-items">
+      <view class="quick-item" wx:for="{{frequentDrinks}}" wx:key="id" bindtap="quickAdd" data-drink="{{item}}">
+        <image class="drink-icon" src="{{item.icon}}" mode="aspectFit"></image>
+        <text class="drink-name">{{item.name}}</text>
       </view>
-      
-      <view class="form-item">
-        <text class="label">饮品名称</text>
-        <input name="name" placeholder="请输入饮品名称" />
+      <view class="quick-item add-new" bindtap="showCustomForm">
+        <view class="add-icon">+</view>
+        <text>自定义</text>
       </view>
-      
-      <view class="form-item">
-        <text class="label">卡路里</text>
-        <input name="calories" type="number" placeholder="请输入卡路里" />
+    </view>
+  </view>
+
+  <!-- 今日记录 -->
+  <view class="today-records">
+    <view class="section-header">
+      <text class="title">今日记录</text>
+      <text class="calories">总卡路里: {{todayCalories}}</text>
+    </view>
+    <view class="record-list">
+      <view class="record-item" wx:for="{{todayRecords}}" wx:key="time">
+        <view class="record-time">{{item.timeStr}}</view>
+        <view class="record-content">
+          <view class="record-main">
+            <text class="brand">{{item.brand}}</text>
+            <text class="name">{{item.name}}</text>
+          </view>
+          <view class="record-detail">
+            <text class="calories">{{item.calories}} 卡路里</text>
+            <view class="actions">
+              <view class="action-btn edit" bindtap="editRecord" data-id="{{item.id}}">
+                <text class="icon">✎</text>
+              </view>
+              <view class="action-btn delete" bindtap="deleteRecord" data-id="{{item.id}}">
+                <text class="icon">×</text>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
-      
-      <button class="cute-btn submit-btn" form-type="submit">
-        保存记录 ♪(^∇^*)
-      </button>
-    </form>
+      <view class="empty-tip" wx:if="{{!todayRecords.length}}">
+        <text>今天还没有记录哦 (◕‿◕✿)</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 自定义表单弹窗 -->
+  <view class="custom-form {{showForm ? 'show' : ''}}">
+    <view class="form-mask" bindtap="hideCustomForm"></view>
+    <view class="form-content">
+      <view class="form-header">
+        <text class="title">添加记录</text>
+        <text class="close" bindtap="hideCustomForm">×</text>
+      </view>
+      <form bindsubmit="submitRecord">
+        <view class="form-item">
+          <text class="label">奶茶品牌</text>
+          <input name="brand" placeholder="请输入奶茶品牌" value="{{formData.brand}}"/>
+        </view>
+        <view class="form-item">
+          <text class="label">饮品名称</text>
+          <input name="name" placeholder="请输入饮品名称" value="{{formData.name}}"/>
+        </view>
+        <view class="form-item">
+          <text class="label">卡路里</text>
+          <input name="calories" type="number" placeholder="请输入卡路里" value="{{formData.calories}}"/>
+        </view>
+        <button class="submit-btn" form-type="submit">保存记录</button>
+      </form>
+    </view>
   </view>
 </view> 

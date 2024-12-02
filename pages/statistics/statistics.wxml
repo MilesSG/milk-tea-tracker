@@ -1,15 +1,63 @@
 <!--pages/statistics/statistics.wxml-->
 <view class="container">
-  <view class="stats-overview">
-    <view class="title">奶茶数据统计 ♪(^∇^*)</view>
-    <view class="stats-card card">
-      <view class="stats-item">
-        <text class="stats-label">本月总数</text>
-        <text class="stats-value">{{monthlyCount}}</text>
+  <!-- 目标完成度部分 -->
+  <view class="goal-section">
+    <view class="section-title">
+      <text>目标完成度</text>
+      <view class="setting-btn" bindtap="showGoalSetting">
+        <text class="setting-text">设置目标</text>
       </view>
-      <view class="stats-item">
-        <text class="stats-label">总卡路里</text>
-        <text class="stats-value">{{totalCalories}}</text>
+    </view>
+    
+    <view class="progress-container">
+      <view class="progress-circle">
+        <canvas type="2d" id="progressCanvas" class="progress-canvas"></canvas>
+        <view class="progress-text">
+          <view class="label">完成度</view>
+          <view class="value">{{completionRate}}%</view>
+        </view>
+      </view>
+      
+      <view class="legend">
+        <view class="legend-item">
+          <view class="legend-color" style="background: #FF69B4;"></view>
+          <view class="legend-text">已完成</view>
+        </view>
+        <view class="legend-item">
+          <view class="legend-color" style="background: #FFE4E1;"></view>
+          <view class="legend-text">目标</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 饮品统计部分 -->
+  <view class="goal-section">
+    <view class="section-title">
+      <text>饮品统计</text>
+    </view>
+    <canvas type="2d" id="lineChart" class="chart-canvas"></canvas>
+  </view>
+
+  <!-- 目标设置弹窗 -->
+  <view class="modal {{showGoalSetting ? 'show' : ''}}">
+    <view class="modal-mask" bindtap="hideGoalSetting"></view>
+    <view class="modal-dialog">
+      <view class="modal-content">
+        <view class="modal-header">
+          <text class="cancel-btn" bindtap="hideGoalSetting">取消</text>
+          <text class="title">设置每月目标</text>
+          <text class="confirm-btn" bindtap="saveGoal">确定</text>
+        </view>
+        <view class="picker-wrapper">
+          <picker-view class="goal-picker" indicator-style="height: 50px;" style="height: 250px;" value="{{goalPickerValue}}" bindchange="onGoalChange">
+            <picker-view-column>
+              <view wx:for="{{goalRange}}" wx:key="*this" style="line-height: 50px; text-align: center;">
+                {{item}}杯
+              </view>
+            </picker-view-column>
+          </picker-view>
+        </view>
       </view>
     </view>
   </view>

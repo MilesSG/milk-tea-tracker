@@ -4,6 +4,7 @@ page {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
     Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
     sans-serif;
+  padding-bottom: calc(48px + env(safe-area-inset-bottom));
 }
 
 .container {
@@ -45,4 +46,38 @@ page {
 .icon {
   width: 40rpx;
   height: 40rpx;
-} 
+}
+
+/* 导航栏容器 */
+.wx-tab-bar {
+  position: fixed !important;
+  bottom: env(safe-area-inset-bottom) !important;
+  left: 8px !important;
+  right: 8px !important;
+  height: 48px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* 导航栏项目 */
+.wx-tab-bar .wx-tab-bar-item {
+  padding-top: 6px !important;
+}
+
+/* 导航栏图标 */
+.wx-tab-bar .wx-tab-bar-item image {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* 导航栏文字 */
+.wx-tab-bar .wx-tab-bar-item view {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  margin-top: 4px !important;
+}
+ 

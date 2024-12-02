@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/record/record",
-    "pages/history/history",
     "pages/statistics/statistics"
   ],
   "window": {
@@ -13,24 +12,27 @@
   },
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#FF9999",
+    "selectedColor": "#FF69B4",
     "backgroundColor": "#ffffff",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "assets/icons/drinks/首页图标.png",
+        "selectedIconPath": "assets/icons/drinks/首页图标.png"
       },
       {
         "pagePath": "pages/record/record",
-        "text": "记录"
-      },
-      {
-        "pagePath": "pages/history/history",
-        "text": "历史"
+        "text": "记录",
+        "iconPath": "assets/icons/drinks/记录图标.png",
+        "selectedIconPath": "assets/icons/drinks/记录图标.png"
       },
       {
         "pagePath": "pages/statistics/statistics",
-        "text": "统计"
+        "text": "统计",
+        "iconPath": "assets/icons/drinks/统计图标.png",
+        "selectedIconPath": "assets/icons/drinks/统计图标.png"
       }
     ]
   }

@@ -1,26 +1,304 @@
-.form-card {
-  margin-top: 40rpx;
+.container {
+  padding: 24rpx;
+  min-height: 100vh;
+  background: #FFF5F5;
+}
+
+/* 快速记录区域 */
+.quick-add {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.quick-add-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.quick-add-header .title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.quick-add-header .date {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.quick-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  padding: 20rpx 0;
+}
+
+.quick-item {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 20rpx 10rpx;
+  text-align: center;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.quick-item:active {
+  transform: scale(0.95);
+}
+
+.drink-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 12rpx;
+  border-radius: 50%;
+  background-color: #fff;
+  padding: 8rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.1);
+}
+
+/* 星巴克特殊样式 */
+.quick-item:nth-child(2) .drink-icon {
+  border: 4rpx solid #FFFFFF;
+}
+
+.drink-name {
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0 8rpx;
+  font-weight: 500;
+}
+
+.add-new {
+  border: 2rpx dashed #FFCCD5;
+  background: #FFFFFF;
+}
+
+.add-icon {
+  font-size: 48rpx;
+  color: #FF69B4;
+  margin-bottom: 8rpx;
+  line-height: 1;
+}
+
+/* 今日记录区域 */
+.today-records {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.section-header .title {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.section-header .calories {
+  font-size: 28rpx;
+  color: #FF69B4;
+}
+
+.record-list {
+  min-height: 200rpx;
+}
+
+.record-item {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #F5F5F5;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.record-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-main {
+  flex: 1;
+}
+
+.brand {
+  font-size: 32rpx;
+  color: #333333;
+  margin-right: 16rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  color: #666666;
+}
+
+.record-detail {
+  display: flex;
+  align-items: center;
+}
+
+.calories {
+  font-size: 28rpx;
+  color: #FF69B4;
+  margin-right: 24rpx;
+}
+
+.actions {
+  display: flex;
+  gap: 16rpx;
+  align-items: center;
+}
+
+.action-btn {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24rpx;
+}
+
+.action-btn.edit {
+  background: #F8F8F8;
+}
+
+.action-btn.delete {
+  background: #FFF0F0;
+}
+
+.icon {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.empty-tip {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999999;
+  font-size: 28rpx;
+}
+
+/* 自定义表单弹窗 */
+.custom-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.custom-form.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.form-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.form-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 32rpx;
+  transform: translateY(100%);
+  transition: all 0.3s;
+}
+
+.custom-form.show .form-content {
+  transform: translateY(0);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.form-header .title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.form-header .close {
+  font-size: 40rpx;
+  color: #999999;
+  padding: 16rpx;
 }
 
 .form-item {
-  margin-bottom: 30rpx;
+  margin-bottom: 24rpx;
 }
 
 .label {
   display: block;
   font-size: 28rpx;
-  color: #666;
-  margin-bottom: 10rpx;
+  color: #666666;
+  margin-bottom: 8rpx;
 }
 
 input {
-  background: #FFF5F5;
-  padding: 20rpx;
-  border-radius: 10rpx;
+  background: #F8F8F8;
+  border-radius: 8rpx;
+  padding: 16rpx;
   font-size: 28rpx;
 }
 
 .submit-btn {
-  margin-top: 60rpx;
-  width: 100% !important;
-} 
+  margin-top: 40rpx;
+  background: #FF69B4;
+  color: #FFFFFF;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+}
+
+.submit-btn:active {
+  opacity: 0.9;
+}

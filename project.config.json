@@ -12,7 +12,7 @@
     "coverView": true,
     "es6": true,
     "postcss": true,
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "lazyloadPlaceholderEnable": false,
     "preloadBackgroundData": false,
     "minified": true,
@@ -20,8 +20,10 @@
     "newFeature": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,
+    "useIsolateContext": true,
     "nodeModules": false,
     "enhance": true,
+    "useCompilerPlugins": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
     "useApiHostProcess": true,
@@ -36,16 +38,16 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "useIsolateContext": true
+    }
   },
   "compileType": "miniprogram",
   "libVersion": "2.19.4",
-  "appid": "wx0b37c65817efc8d5",
+  "appid": "wxaf086ce1fe91346d",
   "projectname": "milkTeaTracker",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "simulatorPluginLibVersion": {}
 }

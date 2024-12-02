@@ -5,18 +5,23 @@ Page({
   },
   onShow() {
     this.calculateTodayStats()
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
   },
   calculateTodayStats() {
-    const app = getApp()
-    const today = new Date().toLocaleDateString()
-    const todayRecords = app.globalData.teaRecords.filter(record => 
-      new Date(record.date).toLocaleDateString() === today
-    )
+    const records = wx.getStorageSync('teaRecords') || [];
+    const today = new Date().toDateString();
+    const todayRecords = records.filter(record => 
+      new Date(record.date).toDateString() === today
+    );
     
     this.setData({
       todayCount: todayRecords.length,
-      todayCalories: todayRecords.reduce((sum, record) => sum + (record.calories || 0), 0)
-    })
+      todayCalories: todayRecords.reduce((sum, record) => sum + (parseInt(record.calories) || 0), 0)
+    });
   },
   goToRecord() {
     wx.navigateTo({
