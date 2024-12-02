@@ -39,6 +39,38 @@
     <canvas type="2d" id="lineChart" class="chart-canvas"></canvas>
   </view>
 
+  <!-- 日历记录部分 -->
+  <view class="goal-section">
+    <view class="section-title">
+      <text>日历记录</text>
+    </view>
+    <view class="calendar">
+      <view class="calendar-header">
+        <view class="arrow" bindtap="prevMonth">上个月</view>
+        <view class="current-month">{{currentYear}}年{{currentMonth}}月</view>
+        <view class="arrow" bindtap="nextMonth">下个月</view>
+      </view>
+      <view class="weekdays">
+        <view wx:for="{{weekDays}}" wx:key="*this" class="weekday">{{item}}</view>
+      </view>
+      <view class="days">
+        <view wx:for="{{days}}" wx:key="date" class="day-cell {{item.isCurrentMonth ? '' : 'other-month'}}">
+          <view class="day-number">{{item.day}}</view>
+          <view class="brand-logos" wx:if="{{item.records.length > 0}}">
+            <image 
+              wx:for="{{item.records}}" 
+              wx:for-item="record" 
+              wx:key="index" 
+              src="{{record.icon}}" 
+              class="brand-logo"
+              mode="aspectFit"
+            />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
   <!-- 目标设置弹窗 -->
   <view class="modal {{showGoalSetting ? 'show' : ''}}">
     <view class="modal-mask" bindtap="hideGoalSetting"></view>

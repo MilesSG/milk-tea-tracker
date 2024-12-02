@@ -1,5 +1,6 @@
 // pages/statistics/statistics.js
 const wxCharts = require('../../utils/wxcharts.js');
+const { brandLogos } = require('../../utils/brandLogos.js');
 
 Page({
   data: {
@@ -9,6 +10,11 @@ Page({
     showGoalSetting: false,
     goalRange: Array.from({length: 31}, (_, i) => i + 1), // 1-31杯
     goalPickerValue: [4], // 默认选中第5个（索引从0开始）
+    // 日历相关数据
+    currentYear: new Date().getFullYear(),
+    currentMonth: new Date().getMonth() + 1,
+    weekDays: ['一', '二', '三', '四', '五', '六', '日'],
+    days: []
   },
 
   onLoad: function() {
@@ -18,15 +24,131 @@ Page({
     this.setData({
       goalPickerValue: [currentGoal - 1]
     });
+    this.generateCalendarDays();
   },
 
   onShow: function() {
     this.loadData();
+    this.generateCalendarDays();
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 2
       });
     }
+  },
+
+  // 生成日历数据
+  generateCalendarDays: function() {
+    const year = this.data.currentYear;
+    const month = this.data.currentMonth;
+    const firstDay = new Date(year, month - 1, 1);
+    const lastDay = new Date(year, month, 0);
+    
+    // 获取上个月的最后几天
+    const prevMonthLastDay = new Date(year, month - 1, 0).getDate();
+    const firstDayWeekDay = firstDay.getDay() || 7; // 将周日(0)转换为7
+    
+    const days = [];
+    
+    // 添加上个月的日期
+    for (let i = firstDayWeekDay - 1; i > 0; i--) {
+      const day = prevMonthLastDay - i + 1;
+      days.push({
+        day,
+        date: new Date(year, month - 2, day),
+        isCurrentMonth: false,
+        records: []
+      });
+    }
+    
+    // 添加当前月的日期
+    for (let i = 1; i <= lastDay.getDate(); i++) {
+      days.push({
+        day: i,
+        date: new Date(year, month - 1, i),
+        isCurrentMonth: true,
+        records: []
+      });
+    }
+    
+    // 添加下个月的日期
+    const remainingDays = 42 - days.length; // 保持6行
+    for (let i = 1; i <= remainingDays; i++) {
+      days.push({
+        day: i,
+        date: new Date(year, month, i),
+        isCurrentMonth: false,
+        records: []
+      });
+    }
+
+    // 获取本月的奶茶记录
+    const records = wx.getStorageSync('teaRecords') || [];
+    
+    // 为每一天添加记录
+    days.forEach(dayObj => {
+      const dayStart = new Date(dayObj.date);
+      dayStart.setHours(0, 0, 0, 0);
+      const dayEnd = new Date(dayObj.date);
+      dayEnd.setHours(23, 59, 59, 999);
+      
+      dayObj.records = records.filter(record => {
+        const recordDate = new Date(record.date);
+        return recordDate >= dayStart && recordDate <= dayEnd;
+      }).map(record => ({
+        ...record,
+        icon: brandLogos[this.getBrandKey(record.brand)] || brandLogos.default
+      }));
+    });
+
+    this.setData({ days });
+  },
+
+  // 获取品牌对应的key
+  getBrandKey: function(brandName) {
+    const brandMap = {
+      '瑞幸咖啡': 'luckin',
+      '星巴克': 'starbucks',
+      '霸王茶姬': 'bawang',
+      '蜜雪冰城': 'mixue',
+      '喜茶': 'heytea',
+      '奈雪的茶': 'nayuki',
+      '乐乐茶': 'lele'
+    };
+    return brandMap[brandName] || 'default';
+  },
+
+  // 切换月份
+  prevMonth: function() {
+    let { currentYear, currentMonth } = this.data;
+    if (currentMonth === 1) {
+      currentMonth = 12;
+      currentYear--;
+    } else {
+      currentMonth--;
+    }
+    this.setData({
+      currentYear,
+      currentMonth
+    }, () => {
+      this.generateCalendarDays();
+    });
+  },
+
+  nextMonth: function() {
+    let { currentYear, currentMonth } = this.data;
+    if (currentMonth === 12) {
+      currentMonth = 1;
+      currentYear++;
+    } else {
+      currentMonth++;
+    }
+    this.setData({
+      currentYear,
+      currentMonth
+    }, () => {
+      this.generateCalendarDays();
+    });
   },
 
   loadData: function() {
