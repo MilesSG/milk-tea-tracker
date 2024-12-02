@@ -7,12 +7,14 @@ Page({
     formData: {},
     todayRecords: [],
     todayCalories: 0,
+    todayAmount: 0,
     frequentDrinks: [
       {
         id: 1,
         name: '生椰拿铁',
         brand: '瑞幸咖啡',
         calories: 180,
+        price: 19,
         icon: brandLogos.luckin
       },
       {
@@ -20,6 +22,7 @@ Page({
         name: '星冰乐',
         brand: '星巴克',
         calories: 320,
+        price: 32,
         icon: brandLogos.starbucks
       },
       {
@@ -27,6 +30,7 @@ Page({
         name: '霸气烤奶',
         brand: '霸王茶姬',
         calories: 280,
+        price: 16,
         icon: brandLogos.bawang
       },
       {
@@ -34,6 +38,7 @@ Page({
         name: '蜜雪冰城',
         brand: '蜜雪冰城',
         calories: 250,
+        price: 7,
         icon: brandLogos.mixue
       },
       {
@@ -41,6 +46,7 @@ Page({
         name: '喜茶满杯',
         brand: '喜茶',
         calories: 300,
+        price: 25,
         icon: brandLogos.heytea
       },
       {
@@ -48,6 +54,7 @@ Page({
         name: '奈雪的茶',
         brand: '奈雪的茶',
         calories: 290,
+        price: 28,
         icon: brandLogos.nayuki
       },
       {
@@ -55,6 +62,7 @@ Page({
         name: '乐乐茶',
         brand: '乐乐茶',
         calories: 310,
+        price: 22,
         icon: brandLogos.lele
       }
     ]
@@ -102,9 +110,15 @@ Page({
       return sum + calories;
     }, 0);
 
+    const todayAmount = todayRecords.reduce((sum, record) => {
+      const price = parseFloat(record.price) || 0;
+      return sum + price;
+    }, 0);
+
     this.setData({
       todayRecords,
-      todayCalories
+      todayCalories,
+      todayAmount
     });
   },
 
@@ -140,6 +154,7 @@ Page({
 
   saveRecord: function(record) {
     const records = wx.getStorageSync('teaRecords') || [];
+    record.price = parseFloat(record.price) || 0;
     records.unshift(record);
     wx.setStorageSync('teaRecords', records);
     

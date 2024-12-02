@@ -118,8 +118,16 @@
   color: #333333;
 }
 
-.section-header .calories {
-  font-size: 28rpx;
+.section-header .stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4rpx;
+}
+
+.section-header .calories,
+.section-header .amount {
+  font-size: 24rpx;
   color: #FF69B4;
 }
 
@@ -161,13 +169,26 @@
 
 .record-detail {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8rpx;
+}
+
+.detail-info {
+  display: flex;
+  gap: 16rpx;
   align-items: center;
 }
 
-.calories {
-  font-size: 28rpx;
+.detail-info .calories,
+.detail-info .price {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.detail-info .price {
   color: #FF69B4;
-  margin-right: 24rpx;
+  font-weight: 500;
 }
 
 .actions {

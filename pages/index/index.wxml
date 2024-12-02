@@ -15,6 +15,27 @@
         <text class="stats-num">{{todayCalories}}</text>
         <text class="stats-label">卡路里</text>
       </view>
+      <view class="stats-item">
+        <text class="stats-num">¥{{todayAmount}}</text>
+        <text class="stats-label">今日消费</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="savings-card card">
+    <view class="title">省钱统计 💰</view>
+    <view class="savings-content">
+      <view class="savings-item">
+        <view class="savings-label">本月已节省</view>
+        <view class="savings-value">¥{{monthlySavings}}</view>
+      </view>
+      <view class="savings-item">
+        <view class="savings-label">平均单价</view>
+        <view class="savings-value">¥{{averagePrice}}/杯</view>
+      </view>
+      <view class="savings-tips">
+        <text class="tip-text">{{monthlySavings > 0 ? '太棒了！继续保持～' : '暂无优惠记录，快去找优惠吧～'}}</text>
+      </view>
     </view>
   </view>
 

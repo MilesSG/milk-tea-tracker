@@ -21,7 +21,10 @@
   <view class="today-records">
     <view class="section-header">
       <text class="title">今日记录</text>
-      <text class="calories">总卡路里: {{todayCalories}}</text>
+      <view class="stats">
+        <text class="calories">总卡路里: {{todayCalories}}</text>
+        <text class="amount">总金额: ¥{{todayAmount}}</text>
+      </view>
     </view>
     <view class="record-list">
       <view class="record-item" wx:for="{{todayRecords}}" wx:key="time">
@@ -32,7 +35,10 @@
             <text class="name">{{item.name}}</text>
           </view>
           <view class="record-detail">
-            <text class="calories">{{item.calories}} 卡路里</text>
+            <view class="detail-info">
+              <text class="calories">{{item.calories}} 卡路里</text>
+              <text class="price">¥{{item.price}}</text>
+            </view>
             <view class="actions">
               <view class="action-btn edit" bindtap="editRecord" data-id="{{item.id}}">
                 <text class="icon">✎</text>
@@ -66,6 +72,10 @@
         <view class="form-item">
           <text class="label">饮品名称</text>
           <input name="name" placeholder="请输入饮品名称" value="{{formData.name}}"/>
+        </view>
+        <view class="form-item">
+          <text class="label">价格</text>
+          <input name="price" type="digit" placeholder="请输入价格" value="{{formData.price}}"/>
         </view>
         <view class="form-item">
           <text class="label">卡路里</text>

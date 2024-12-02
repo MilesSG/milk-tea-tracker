@@ -1,90 +1,136 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40rpx 0;
-  background: linear-gradient(180deg, #FFE4E1 0%, #FFF5F5 100%);
-  border-radius: 0 0 40rpx 40rpx;
-  margin: -20rpx -20rpx 0 -20rpx;
-  padding: 60rpx 20rpx;
+.container {
+  padding: 24rpx;
+  min-height: 100vh;
+  background: #FFF5F5;
 }
 
-.logo {
-  width: 200rpx;
-  height: 200rpx;
-  margin-bottom: 20rpx;
+.header {
+  text-align: center;
+  padding: 40rpx 0;
 }
 
 .welcome {
-  font-size: 40rpx;
+  font-size: 36rpx;
   color: #FF69B4;
-  font-weight: bold;
-  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
+  font-weight: 500;
+  margin-bottom: 12rpx;
+  display: block;
 }
 
 .subtitle {
   font-size: 28rpx;
-  color: #FF99CC;
-  margin-top: 10rpx;
+  color: #999;
+  display: block;
 }
 
-.quick-stats {
-  margin-top: 40rpx;
+.card {
+  background: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.title {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 24rpx;
+  font-weight: 500;
 }
 
 .stats-content {
-  display: flex;
-  justify-content: space-around;
-  padding: 20rpx 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
 }
 
 .stats-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  padding: 20rpx;
   background: #FFF5F5;
-  padding: 20rpx 40rpx;
-  border-radius: 20rpx;
+  border-radius: 12rpx;
 }
 
 .stats-num {
-  font-size: 48rpx;
+  font-size: 36rpx;
   color: #FF69B4;
   font-weight: bold;
+  display: block;
+  margin-bottom: 8rpx;
 }
 
 .stats-label {
   font-size: 24rpx;
-  color: #999;
-  margin-top: 10rpx;
+  color: #666;
 }
 
-.quick-actions {
-  margin-top: 40rpx;
-  display: flex;
-  justify-content: center;
+/* 省钱统计卡片样式 */
+.savings-card {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
 }
 
-.tips {
-  margin-top: 40rpx;
+.savings-content {
   display: flex;
   flex-direction: column;
+  gap: 20rpx;
+}
+
+.savings-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 30rpx;
+  padding: 16rpx;
+  background: rgba(255, 105, 180, 0.1);
+  border-radius: 12rpx;
+}
+
+.savings-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.savings-value {
+  font-size: 32rpx;
+  color: #FF69B4;
+  font-weight: bold;
+}
+
+.savings-tips {
+  text-align: center;
+  padding: 16rpx;
 }
 
 .tip-text {
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #999;
-  line-height: 1.6;
+}
+
+.quick-actions {
+  margin: 32rpx 0;
 }
 
 .cute-btn {
-  background: linear-gradient(45deg, #FF69B4, #FF99CC);
-  color: white;
-  border-radius: 30rpx;
-  padding: 20rpx 40rpx;
+  background: #FF69B4;
+  color: #FFFFFF;
+  border-radius: 99rpx;
   font-size: 32rpx;
-  box-shadow: 0 4rpx 8rpx rgba(255, 105, 180, 0.3);
+  padding: 20rpx 0;
+  box-shadow: 0 4rpx 12rpx rgba(255, 105, 180, 0.3);
   border: none;
+}
+
+.cute-btn::after {
+  border: none;
+}
+
+.tips {
+  text-align: center;
+  padding: 32rpx;
+}
+
+.tips .tip-text {
+  display: block;
+  margin-bottom: 8rpx;
+  color: #999;
+  font-size: 28rpx;
 } 
